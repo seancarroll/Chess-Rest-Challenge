@@ -1,5 +1,7 @@
 package com.seancarroll.chess.domain;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum GameResult {
 
     WHITE_WON("1-0"),
@@ -13,6 +15,7 @@ public enum GameResult {
         this.result = result;
     }
     
+    @JsonValue
     @Override
     public String toString() {
         return result;

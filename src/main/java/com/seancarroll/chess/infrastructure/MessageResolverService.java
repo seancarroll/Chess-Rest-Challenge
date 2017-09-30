@@ -30,8 +30,7 @@ public class MessageResolverService {
     public String resolveMessage(ObjectError objectError) {
         return messageSource.getMessage(objectError, getCurrentLocale());
     }
-    
-    
+       
     private static Locale getCurrentLocale() {
         return LocaleContextHolder.getLocale();
     }

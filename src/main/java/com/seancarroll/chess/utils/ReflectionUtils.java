@@ -5,6 +5,7 @@ import java.lang.reflect.Type;
 
 public class ReflectionUtils {
     private ReflectionUtils() {
+        // static utility
     }
 
     /**

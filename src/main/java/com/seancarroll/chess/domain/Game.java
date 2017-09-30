@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 
@@ -30,6 +31,32 @@ public class Game {
         this.whitePlayer = white;
         this.blackPlayer = black;
         this.result = GameResult.ONGOING;
+    }
+    
+    
+    public Game(UUID id, String event, String site, ZonedDateTime date, int round, Player whitePlayer, Player blackPlayer, GameResult result, List<Move> moves) {
+        this.id = id;
+        this.event = event;
+        this.site = site;
+        this.date = date;
+        this.round = 0;
+        this.whitePlayer = whitePlayer;
+        this.blackPlayer = blackPlayer;
+        this.result = result;
+    }
+    
+    @JsonCreator
+    public static Game makeGame(
+            @JsonProperty("id") UUID id, 
+            @JsonProperty("event") String event, 
+            @JsonProperty("site") String site, 
+            @JsonProperty("date") ZonedDateTime date, 
+            @JsonProperty("round") int round, 
+            @JsonProperty("whitePlayer") Player whitePlayer, 
+            @JsonProperty("blackPlayer") Player blackPlayer, 
+            @JsonProperty("result") GameResult result, 
+            @JsonProperty("moves") List<Move> moves) {
+        return new Game(id, event, site, date, round, whitePlayer, blackPlayer, result, moves);
     }
 
     public UUID getId() {
@@ -74,7 +101,7 @@ public class Game {
     
     public void resign(String player) {
         Preconditions.checkNotNull(player);
-        Preconditions.checkState(result == GameResult.ONGOING);
+        Preconditions.checkState(result == GameResult.ONGOING, "Cannot resign a game that not currently ongoing");
         if (Objects.equal(player, whitePlayer.getName())) {
            result = GameResult.BLACK_WON;
         } else if (Objects.equal(player, blackPlayer.getName())) {

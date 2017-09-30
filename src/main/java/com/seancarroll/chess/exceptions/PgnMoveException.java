@@ -1,4 +1,4 @@
-package com.seancarroll.chess;
+package com.seancarroll.chess.exceptions;
 
 public class PgnMoveException extends RuntimeException {
 

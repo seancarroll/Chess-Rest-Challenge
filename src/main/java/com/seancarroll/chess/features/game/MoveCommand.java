@@ -15,7 +15,7 @@ public class MoveCommand implements Command {
     private UUID gameId;
     
     @NotBlank
-    private String movetext;
+    private String san;
 
     public UUID getGameId() {
         return gameId;
@@ -25,19 +25,19 @@ public class MoveCommand implements Command {
         this.gameId = gameId;
     }
 
-    public String getMovetext() {
-        return movetext;
+    public String getSan() {
+        return san;
     }
 
-    public void setMovetext(String movetext) {
-        this.movetext = movetext;
+    public void setSan(String san) {
+        this.san = san;
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("gameId", getGameId())
-                .add("movetext", getMovetext())
+                .add("san", getSan())
                 .toString();
     }
     

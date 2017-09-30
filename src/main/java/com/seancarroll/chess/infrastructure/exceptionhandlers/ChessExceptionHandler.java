@@ -34,6 +34,30 @@ public class ChessExceptionHandler {
         this.messageResolver = new MessageResolverService(messageSource);
     }
     
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResponse handleIllegalArgumentException(IllegalArgumentException exception) {
+        logger.error("Illegal argument exception occurred", exception);
+        ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, "invalid_request");
+        ErrorDTO e = new ErrorDTO();
+        e.setMessage(exception.getMessage());
+        response.addError(e);
+        return response;
+    }
+    
+    
+    @ExceptionHandler(IllegalStateException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResponse handleIllegalStateException(IllegalStateException exception) {
+        logger.error("Illegal argument exception occurred", exception);
+        ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, "invalid_request");
+        ErrorDTO e = new ErrorDTO();
+        e.setMessage(exception.getMessage());
+        response.addError(e);
+        return response;
+    }
     
     @ExceptionHandler(BindException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)

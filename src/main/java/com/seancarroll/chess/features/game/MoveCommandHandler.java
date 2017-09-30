@@ -21,7 +21,9 @@ public class MoveCommandHandler implements RequestHandler<MoveCommand, Game> {
         Game game = gameService.getGame(command.getGameId());
         Guard.checkResourceNotFound(game, "Could not find game " + command.getGameId());
         
-        game.addMove(command.getMovetext());
+        // TODO: need to validate move. Confirm that is a legal move
+        
+        game.addMove(command.getSan());
         
         return game;
     }

@@ -20,21 +20,15 @@ public class Game {
     private final Player whitePlayer;
     private final Player blackPlayer;
     private GameResult result;
-    private final List<Move> moves = new ArrayList<>();
+    private final Board board;
+    private final List<Move> moves;
     
     public Game(String event, String site, Player white, Player black) {
-        this.id = UUID.randomUUID();
-        this.event = event;
-        this.site = site;
-        this.date = ZonedDateTime.now();
-        this.round = 0;
-        this.whitePlayer = white;
-        this.blackPlayer = black;
-        this.result = GameResult.ONGOING;
+        this(UUID.randomUUID(), event, site, ZonedDateTime.now(), 0, white, black, GameResult.ONGOING, new Board(), new ArrayList<>());
     }
     
     
-    public Game(UUID id, String event, String site, ZonedDateTime date, int round, Player whitePlayer, Player blackPlayer, GameResult result, List<Move> moves) {
+    public Game(UUID id, String event, String site, ZonedDateTime date, int round, Player whitePlayer, Player blackPlayer, GameResult result, Board board, List<Move> moves) {
         this.id = id;
         this.event = event;
         this.site = site;
@@ -43,6 +37,8 @@ public class Game {
         this.whitePlayer = whitePlayer;
         this.blackPlayer = blackPlayer;
         this.result = result;
+        this.board = new Board();
+        this.moves = moves;
     }
     
     @JsonCreator
@@ -55,8 +51,9 @@ public class Game {
             @JsonProperty("whitePlayer") Player whitePlayer, 
             @JsonProperty("blackPlayer") Player blackPlayer, 
             @JsonProperty("result") GameResult result, 
+            @JsonProperty("board") Board board,
             @JsonProperty("moves") List<Move> moves) {
-        return new Game(id, event, site, date, round, whitePlayer, blackPlayer, result, moves);
+        return new Game(id, event, site, date, round, whitePlayer, blackPlayer, result, board, moves);
     }
 
     public UUID getId() {
@@ -89,6 +86,10 @@ public class Game {
 
     public GameResult getResult() {
         return result;
+    }
+    
+    public Board getBoard() {
+        return board;
     }
     
     public List<Move> getMoves() {

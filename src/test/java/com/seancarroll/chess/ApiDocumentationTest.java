@@ -81,6 +81,7 @@ public class ApiDocumentationTest {
                                 fieldWithPath("blackPlayer").description("The player of the black pieces"),
                                 fieldWithPath("round").description("The playing round ordinal of the game"),
                                 fieldWithPath("result").description("The result of the game"),
+                                fieldWithPath("board").description("The current board"),
                                 fieldWithPath("moves").description("The moves that occurred during the game"))));
     }
 
@@ -106,6 +107,7 @@ public class ApiDocumentationTest {
                             fieldWithPath("round").description("The playing round ordinal of the game"),
                             fieldWithPath("blackPlayer").description("The player of the black pieces"),
                             fieldWithPath("result").description("The result of the game"),
+                            fieldWithPath("board").description("The current board"),
                             fieldWithPath("moves").description("The moves that occurred during the game"))));
     }
     
@@ -131,6 +133,7 @@ public class ApiDocumentationTest {
                             fieldWithPath("blackPlayer").description("The player of the black pieces"),
                             fieldWithPath("round").description("The playing round ordinal of the game"),             
                             fieldWithPath("result").description("The result of the game"),
+                            fieldWithPath("board").description("The current board"),
                             fieldWithPath("moves").description("The moves that occurred during the game"))));
     }
     
@@ -153,6 +156,7 @@ public class ApiDocumentationTest {
                             fieldWithPath("blackPlayer").description("The player of the black pieces"),
                             fieldWithPath("round").description("The playing round ordinal of the game"),             
                             fieldWithPath("result").description("The result of the game"),
+                            fieldWithPath("board").description("The current board"),
                             fieldWithPath("moves").description("The moves that occurred during the game"))));
 
     }

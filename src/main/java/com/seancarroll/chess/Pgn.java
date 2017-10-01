@@ -45,6 +45,8 @@ public class Pgn {
         String pgnDestination = pgnMatcher.group(5);
         String pgnPromotion = pgnMatcher.group(6);
         
+        // TODO: finish
+        
     }
     
     public static String exportGame(Game game) {

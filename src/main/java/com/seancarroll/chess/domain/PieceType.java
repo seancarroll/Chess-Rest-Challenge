@@ -1,12 +1,17 @@
 package com.seancarroll.chess.domain;
 
+/**
+ * 
+ * @author seancarroll
+ *
+ */
 public enum PieceType {
-    PAWN('p', "pawn"), 
-    KNIGHT('n', "knight"), 
-    BISHOP('b', "bishop"),
-    ROOK('r', "rook"), 
-    QUEEN('q', "queen"), 
-    KING('k', "king");
+    PAWN('P', "pawn"), 
+    KNIGHT('N', "knight"), 
+    BISHOP('B', "bishop"),
+    ROOK('R', "rook"), 
+    QUEEN('Q', "queen"), 
+    KING('K', "king");
 
     private final Character shortName;
     private final String fullName;
@@ -20,7 +25,7 @@ public enum PieceType {
         PieceType result = null;
 
         for (PieceType type : PieceType.values()) {
-            if (type.getShortName() == s.toLowerCase().charAt(0)) {
+            if (type.getShortName() == s.toUpperCase().charAt(0)) {
                 result = type;
                 break;
             }

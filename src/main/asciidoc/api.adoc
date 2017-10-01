@@ -1,0 +1,140 @@
+:table-caption!:
+:icons: font
+:toc: left
+:toclevels: 3
+:sectlinks:
+
+= Chess Rest API
+
+Restful chess service implemented as part of a code challenge
+
+== Errors
+
+Uses conventional HTTP response codes to indicate the success or failure of an API request.
+In general, codes in the 2XX range indicate success, codes in the 4XX range indicate client errors, and codes in the 5XX range indicate an unexpected error which should be rare or temporary.
+
+.Attributes
+[cols="1,4"]
+|===
+
+| types
+| The type of error returned. Can be invalid_request, api_error
+
+| status
+| HTTP status code
+
+| errors (Optional)
+| An array of error objects that give context for the error. Includes code, message, field, and rejected value.
+
+|===
+
+Error Response
+[source,json]
+----
+    {
+        "status": 400,
+        "type": "invaild_request",
+        "errors": [
+             {
+                 "code": "NotBlank",
+                 "message": "may not be empty",
+                 "field": "whitePlayer",
+                 "rejectedValue": ""
+             }
+        ]
+    }
+----
+
+== Create Game
+
+Creates a game
+
+Request
+
+include::{snippets}/create-game/request-parameters.adoc[]
+
+HTTP Request
+
+include::{snippets}/create-game/http-request.adoc[]
+
+CURL Request
+
+include::{snippets}/create-game/curl-request.adoc[]
+
+Response Fields
+
+include::{snippets}/create-game/response-fields.adoc[]
+
+HTTP Response
+
+include::{snippets}/create-game/http-response.adoc[]
+
+
+== Resign 
+
+Allows a player to resign
+
+Path Parameters
+
+include::{snippets}/resign-game/path-parameters.adoc[]
+
+Request
+
+include::{snippets}/resign-game/request-parameters.adoc[]
+
+CURL Request
+
+include::{snippets}/resign-game/curl-request.adoc[]
+
+Response Fields
+
+include::{snippets}/resign-game/response-fields.adoc[]
+
+HTTP Response
+
+include::{snippets}/resign-game/http-response.adoc[]
+
+
+== Get Game 
+
+Get details for a game
+
+Path Parameters
+
+include::{snippets}/get-game/path-parameters.adoc[]
+
+CURL Request
+
+include::{snippets}/get-game/curl-request.adoc[]
+
+Response Fields
+
+include::{snippets}/get-game/response-fields.adoc[]
+
+HTTP Response
+
+include::{snippets}/get-game/http-response.adoc[]
+
+== Move 
+
+Execute a move
+
+Path Parameters
+
+include::{snippets}/move/path-parameters.adoc[]
+
+Request
+
+include::{snippets}/move/request-parameters.adoc[]
+
+CURL Request
+
+include::{snippets}/move/curl-request.adoc[]
+
+Response Fields
+
+include::{snippets}/move/response-fields.adoc[]
+
+HTTP Response
+
+include::{snippets}/move/http-response.adoc[]

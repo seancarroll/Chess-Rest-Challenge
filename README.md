@@ -38,3 +38,7 @@ Simple CQRS style command bus with feature folders.
 Requests (Queries) and commands are processed through a simple in-process [mediator](https://en.wikipedia.org/wiki/Mediator_pattern).
 The mediator aka request dispathcher follows a simple "one model in, one model out" pattern in which it takes a request, can be either a command or query, delivers it to a handler, and hten returns the response back from the handler.
 Request handlers are registered on start-up via an ApplicationListener via Spring's component scanning.
+
+## Documentation
+
+Sample API document can be found at https://github.com/seancarroll/Chess-Rest-Challenge/blob/master/api.pdf
